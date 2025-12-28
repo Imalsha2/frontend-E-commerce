@@ -1,4 +1,4 @@
-import { ShoppingCart, User, Search, Menu, X, LogOut } from 'lucide-react';
+import { ShoppingCart, User, Search, Menu, X, LogOut, BarChart3 } from 'lucide-react';
 import { useState } from 'react';
 
 interface HeaderProps {
@@ -12,6 +12,7 @@ interface HeaderProps {
   currentUser: { name: string; email: string } | null;
   onLogout: () => void;
   onAccountClick: () => void;
+  onDashboardClick: () => void;
 }
 
 export default function Header({ 
@@ -24,7 +25,8 @@ export default function Header({
   onCategoryChange,
   currentUser,
   onLogout,
-  onAccountClick
+  onAccountClick,
+  onDashboardClick
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -66,6 +68,16 @@ export default function Header({
 
           {/* Icons */}
           <div className="flex items-center gap-4">
+            {/* Dashboard Button */}
+            <button
+              onClick={onDashboardClick}
+              className="hidden md:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg"
+              title="View Dashboard"
+            >
+              <BarChart3 className="w-5 h-5" />
+              <span className="text-sm font-medium">Dashboard</span>
+            </button>
+
             {/* User Info */}
             <div className="relative hidden md:block">
               <div className="flex items-center gap-3">

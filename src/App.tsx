@@ -6,6 +6,7 @@ import Cart from './components/Cart';
 import Toast from './components/Toast';
 import LoginModal from './components/LoginModal';
 import AccountModal from './components/AccountModal';
+import Dashboard from './components/Dashboard';
 import ContactModal from './components/ContactModal';
 import ShippingModal from './components/ShippingModal';
 import ReturnsModal from './components/ReturnsModal';
@@ -130,6 +131,7 @@ function App() {
   const [isReturnsModalOpen, setIsReturnsModalOpen] = useState(false);
   const [isFAQModalOpen, setIsFAQModalOpen] = useState(false);
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
+  const [isDashboardOpen, setIsDashboardOpen] = useState(false);
 
   const handleAddToCart = (product: Product) => {
     setCartItems((prev) => {
@@ -266,6 +268,7 @@ function App() {
         currentUser={currentUser}
         onLogout={handleLogout}
         onAccountClick={() => setIsAccountModalOpen(true)}
+        onDashboardClick={() => setIsDashboardOpen(true)}
       />
       
       <main>
@@ -453,6 +456,10 @@ function App() {
           type={toast.type}
           onClose={() => setToast(null)}
         />
+      )}
+
+      {isDashboardOpen && (
+        <Dashboard onClose={() => setIsDashboardOpen(false)} />
       )}
 
       <ContactModal
