@@ -114,6 +114,15 @@ export default function Header({
               )}
             </button>
 
+            {/* Compact Profile Icon (mobile) */}
+            <button
+              onClick={onAccountClick}
+              className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              title="Profile"
+            >
+              <User className="w-6 h-6 text-gray-600" />
+            </button>
+
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -151,6 +160,17 @@ export default function Header({
             ))}
           </ul>
         </nav>
+
+        {/* Mobile Quick Actions */}
+        <div className="md:hidden pb-4 flex flex-col sm:flex-row gap-3">
+          <button
+            onClick={onDashboardClick}
+            className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-md hover:from-blue-700 hover:to-purple-700 transition-all w-full"
+          >
+            <BarChart3 className="w-5 h-5" />
+            <span>Dashboard</span>
+          </button>
+        </div>
 
         {/* Mobile Search */}
         <div className="md:hidden pb-4">
